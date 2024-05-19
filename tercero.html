@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto FP&#128062;</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+        <a class="navbar-brand" href="menu.html">Fundación Patitas&#128062;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Menu.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a id="bottom"class="nav-link" href="Menu.html">Gatitos Disponibles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cuarto.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="tercero.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+  
+</nav>   
+      
+</body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<style>
+    body {
+       
+        background-image: url('img/foto111.jpeg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        }
+     
+    .error {
+        color: red;
+    }
+</style>
+</head>
+
+<div class="container">
+    <h2 style="text-align: center;">¡Contáctanos!📞</h2>
+    <form id="contactForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+            
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+            
+        <label for="mensaje">Cuéntanos tu duda:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        <br>
+        <br>
+        <button type="submit" id="mensajeAdopcion">Enviar</button>
+    </form>
+</div>
+</div>
+
+<div id="mensajeAdopcion" style="display: none; text-align: center; margin-top: 20px;">
+    <h3>¡Felicidades! Has adoptado a tu gato 🐱</h3>
+</div>
+
+<script>
+    const form = document.getElementById('contactForm');
+        const mensajeAdopcion = document.getElementById('mensajeAdopcion');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+        // Validar el formulario
+        if (validateForm()) {
+            // Aquí podrías enviar el formulario utilizando AJAX o simplemente dejar que se envíe normalmente
+            // form.submit();
+            alert('Formulario enviado correctamente.');
+        }
+    
+    });
+
+    function validateForm() {
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
+        let isValid = true;
+
+        // Validar nombre
+        if (nombre === '') {
+            displayError('nombre', 'Por favor, ingresa tu nombre');
+            isValid = false;
+        } else {
+            removeError('nombre');
+        }
+
+        // Validar email
+        if (email === '') {
+            displayError('email', 'Por favor, ingresa tu correo electrónico');
+            isValid = false;
+        } else if (!isValidEmail(email)) {
+            displayError('email', 'Por favor, ingresa un correo electrónico válido');
+            isValid = false;
+        } else {
+            removeError('email');
+        }
+
+        // Validar mensaje
+        if (mensaje === '') {
+            displayError('mensaje', 'Por favor, ingresa tu mensaje');
+            isValid = false;
+        } else {
+            removeError('mensaje');
+        }
+
+        return isValid;
+    }
+
+    function isValidEmail(email) {
+        // Utilizando una expresión regular simple para validar el formato del correo electrónico
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function displayError(fieldId, errorMessage) {
+        const field = document.getElementById(fieldId);
+        const errorElement = document.createElement('span');
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add('error');
+
+        const parent = field.parentNode;
+        parent.appendChild(errorElement);
+    }
+
+    function removeError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const parent = field.parentNode;
+        const error = parent.querySelector('.error');
+
+        if (error) {
+            parent.removeChild(error);
+        }
+    }
+</script>
+<footer class="bg-dark text-light text-center py-3">
+    <p>&copy; 2024 Fundación Patitas&#128062;</p>
+</footer>
+
+</body>
+</html>
