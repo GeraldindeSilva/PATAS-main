@@ -1,147 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FP&#128062;</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    
-
-    <a class="navbar-brand" href="Menu.html">Fundación Patitas&#128062;</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="Menu.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a id="bottom"class="nav-link" href="Menu.html">Gatitos Disponibles</a>
-            </li>
-            <li class="nav-item">
-                <a id="bottom"class="nav-link" href="cuarto.html">Quienes somos</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="tercero.html">Contacto</a>
-            </li>
-        </ul>
-    </div> 
-</nav> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <title>FP&#128062;</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    input[type="text"], select {
-        width: 200px;
-        padding: 5px;
-        margin-bottom: 10px;
-    }
-    input[type="submit"] {
-        padding: 8px 15px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    #autos-list {
-        margin-top: 20px;
-    }
-</style>
 <body>
-
-<h2>compra esos accesorios</h2>
-
-<form id="accesorios-form">
-    <label for="nombre">Nombre del accesorio:</label><br>
-    <input type="text" id="nombre" required><br>
-    <label for="tipo">Tipo de accesorio:</label><br>
-    <select id="tipo" required>
-        <option value="">Seleccione el tipo</option>
-        <option value="Juguetes">Juguetes</option>
-        <option value="Rascadores">Rascadores</option>
-        <option value="Transportadoras">Transportadoras</option>
-        <option value="Alimentación">Alimentación</option>
-        <option value="Otros">Otros</option>
-    </select><br>
-    <label for="precio">Precio:</label><br>
-    <input type="text" id="precio" required><br>
-    <input type="submit" value="Guardar">
-</form>
-
-<div id="accesorios-list"></div>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
+        <a class="navbar-brand" href="Menu.html">Fundación Patitas&#128062;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+        <a class="navbar-brand" href="Menu.html">Fundación Patitas&#128062;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Menu.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a id="bottom"class="nav-link" href="Menu.html">Gatitos Disponibles</a>
+                </li>
+                <li class="nav-item">
+                    <a id="bottom"class="nav-link" href="cuarto.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="tercero.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+</nav>
 <script>
-    // Función para guardar el accesorio en localStorage
-    function guardarAccesorio() {
-        var nombre = document.getElementById('nombre').value;
-        var tipo = document.getElementById('tipo').value;
-        var precio = document.getElementById('precio').value;
 
-        // Validar que todos los campos estén completos
-        if (nombre && tipo && precio) {
-            // Crear objeto accesorio
-            var accesorio = {
-                "nombre": nombre,
-                "tipo": tipo,
-                "precio": precio
-            };
-
-            // Obtener accesorios existentes del localStorage o inicializar un array vacío
-            var accesorios = JSON.parse(localStorage.getItem('accesorios')) || [];
-
-            // Agregar el nuevo accesorio al array
-            accesorios.push(accesorio);
-
-            // Guardar el array de accesorios en localStorage
-            localStorage.setItem('accesorios', JSON.stringify(accesorios));
-
-            // Limpiar el formulario
-            document.getElementById('accesorios-form').reset();
-
-            // Mostrar la lista de accesorios actualizada
-            mostrarAccesorios();
-        } else {
-            alert("Por favor complete todos los campos.");
-        }
+    function scrollDown() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }
-
-    // Función para mostrar la lista de accesorios
-    function mostrarAccesorios() {
-        var accesorios = JSON.parse(localStorage.getItem('accesorios'));
-
-        var accesoriosList = document.getElementById('accesorios-list');
-        accesoriosList.innerHTML = '';
-
-        if (accesorios && accesorios.length > 0) {
-            var html = '<h3>Accesorios Registrados:</h3><ul>';
-            accesorios.forEach(function(accesorio) {
-                html += '<li>Nombre: ' + accesorio.nombre + ', Tipo: ' + accesorio.tipo + ', Precio: $' + accesorio.precio + '</li>';
-            });
-            html += '</ul>';
-            accesoriosList.innerHTML = html;
-        } else {
-            accesoriosList.innerHTML = '<p>No hay accesorios registrados.</p>';
-        }
-    }
-
-    // Mostrar la lista de accesorios al cargar la página
-    window.onload = function() {
-        mostrarAccesorios();
-    };
-
-    // Agregar evento al formulario para guardar el accesorio
-    document.getElementById('accesorios-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        guardarAccesorio();
-    });
+    document.getElementById('bottom').addEventListener('click', scrollDown);
 </script>
-<footer class="bg-dark text-light text-center py-3 fixed-bottom">
-    <p>&copy; 2024 Fundación Patitas&#128062;</p>
-</footer>
-
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #141C29;
+            padding-top: 80px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px 20px 0px 0px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15%;
+            height: 70px;
+            top: 0;
+            position: fixed;
+            width: 100%;
+        }
+        .scroll {
+            background-color: aliceblue;
+            box-shadow: .1rem .2rem .3rem #333;
+        }
+        .scroll img {
+            filter: invert(15%);
+        }
+        .scroll h1 {
+            color: #141C29;
+        }
+        .carrito {
+            filter: invert(100%);
+            width: 45px;
+            height: auto;
+        }
+        .contenedor1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 0 20px;
+        }
+        .producto {
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+            background-color: #2D4263;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .producto:hover {
+            background-color: #11294d;
+        }
+        .informacion {
+            padding: 10px;
+            text-align: center;
+        }
+        .precio {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f39c12;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+    </style>
+    <header id="header">
+        <h5>ACCESORIO DE LA FUNDACIÓN PATITAS</h5> 
+        <img class="carrito" src="img/carro.png" alt="carrito">
+    </header>
+    <div id="contenedor1" class="contenedor1">
+        <div class="producto">
+            <img src="img/cama.webp" alt="producto 1">
+            <div class="informacion">
+                <p>Producto 1</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="img/cepillo.jpeg" alt="producto 2">
+            <div class="informacion">
+                <p>Producto 2</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="img/correa.jpeg" alt="producto 3">
+            <div class="informacion">
+                <p>Producto 3</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="img/juguete.webp" alt="producto 4">
+            <div class="informacion">
+                <p>Producto 4</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="img/rascador.jpg" alt="producto 5">
+            <div class="informacion">
+                <p>Producto 5</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="img/sujetador.jpg" alt="producto 6">
+            <div class="informacion">
+                <p>Producto 6</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -9,3 +9,16 @@
     transform: translate(-50%, -50%);
     color: white;
 }
+
+h5{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 30px 0px;
+}
+img {
+    width: 320px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px;
+}
+
