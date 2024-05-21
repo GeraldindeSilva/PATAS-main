@@ -1,147 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FP&#128062;</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    
-
-    <a class="navbar-brand" href="Menu.html">Fundación Patitas&#128062;</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="Menu.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a id="bottom"class="nav-link" href="Menu.html">Gatitos Disponibles</a>
-            </li>
-            <li class="nav-item">
-                <a id="bottom"class="nav-link" href="cuarto.html">Quienes somos</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="tercero.html">Contacto</a>
-            </li>
-        </ul>
-    </div> 
-</nav> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FP&#128062;</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-image: url('img/foto111.jpeg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        input[type="text"], select {
+            width: 560px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #michi-list {
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    input[type="text"], select {
-        width: 200px;
-        padding: 5px;
-        margin-bottom: 10px;
-    }
-    input[type="submit"] {
-        padding: 8px 15px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    #autos-list {
-        margin-top: 20px;
-    }
-</style>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="menu.html">Fundación Patitas&#128062;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Menu.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a id="bottom" class="nav-link" href="Menu.html">Gatitos Disponibles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cuarto.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tercero.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario.html">Da un gato en adopcion</a>
+                </li>                  
+            </ul>
+        </div>
+    </nav> 
 
-<h2>compra esos accesorios</h2>
+    <div class="container">
+        <br>
+        <h2 style="text-align: center;">Da un gato en adopción&#128062;</h2>
+        <br>
+        <form id="michi-form">
+            <label for="nombre">Nombre del gato:</label><br>
+            <input type="text" id="nombre" required><br>
+            <label for="edad">Edad del gato:</label><br>
+            <select id="edad" required>
+                <option value="">Seleccione edad</option>
+                <option value="0 - 1 mes">0 - 1 mes</option>
+                <option value="3 - 6 meses">3 - 6 meses</option>
+                <option value="7 - 12 meses">7 - 12 meses</option>
+                <option value="1 - 5 años">1 - 5 años</option>
+                <option value="6 - 10 años o más">6 - 10 años o más</option>
+            </select><br>
+            <label for="info">Información adicional:</label><br>
+            <input type="text" id="informacion" required><br>
+            <input type="submit" value="Guardar">
+        </form>
+        <div id="michi-list"></div>
+    </div>
 
-<form id="accesorios-form">
-    <label for="nombre">Nombre del accesorio:</label><br>
-    <input type="text" id="nombre" required><br>
-    <label for="tipo">Tipo de accesorio:</label><br>
-    <select id="tipo" required>
-        <option value="">Seleccione el tipo</option>
-        <option value="Juguetes">Juguetes</option>
-        <option value="Rascadores">Rascadores</option>
-        <option value="Transportadoras">Transportadoras</option>
-        <option value="Alimentación">Alimentación</option>
-        <option value="Otros">Otros</option>
-    </select><br>
-    <label for="precio">Precio:</label><br>
-    <input type="text" id="precio" required><br>
-    <input type="submit" value="Guardar">
-</form>
+    <footer class="bg-dark text-light text-center py-3 fixed-bottom">
+        <p>&copy; 2024 Fundación Patitas&#128062;</p>
+    </footer>
 
-<div id="accesorios-list"></div>
+    <script>
+        function guardarMichi() {
+            var nombre = document.getElementById('nombre').value;
+            var edad = document.getElementById('edad').value;
+            var info = document.getElementById('informacion').value;
 
-<script>
-    // Función para guardar el accesorio en localStorage
-    function guardarAccesorio() {
-        var nombre = document.getElementById('nombre').value;
-        var tipo = document.getElementById('tipo').value;
-        var precio = document.getElementById('precio').value;
+            // Validar que todos los campos estén completos
+            if (nombre && edad && info) {
+                // Crear objeto michi
+                var michi = {
+                    "nombre": nombre,
+                    "edad": edad,
+                    "info": info
+                };
 
-        // Validar que todos los campos estén completos
-        if (nombre && tipo && precio) {
-            // Crear objeto accesorio
-            var accesorio = {
-                "nombre": nombre,
-                "tipo": tipo,
-                "precio": precio
-            };
+                // Obtener michis existentes del localStorage o inicializar un array vacío
+                var michis = JSON.parse(localStorage.getItem('michis')) || [];
 
-            // Obtener accesorios existentes del localStorage o inicializar un array vacío
-            var accesorios = JSON.parse(localStorage.getItem('accesorios')) || [];
+                // Agregar el nuevo michi al array
+                michis.push(michi);
+                    
+                // Guardar el array de michi en localStorage
+                localStorage.setItem('michis', JSON.stringify(michis));
 
-            // Agregar el nuevo accesorio al array
-            accesorios.push(accesorio);
+                // Limpiar el formulario
+                document.getElementById('michi-form').reset();
 
-            // Guardar el array de accesorios en localStorage
-            localStorage.setItem('accesorios', JSON.stringify(accesorios));
-
-            // Limpiar el formulario
-            document.getElementById('accesorios-form').reset();
-
-            // Mostrar la lista de accesorios actualizada
-            mostrarAccesorios();
-        } else {
-            alert("Por favor complete todos los campos.");
+                // Mostrar la lista de michi actualizada
+                mostrarMichis();
+            } else {
+                alert("Por favor complete todos los campos.");
+            }
         }
-    }
 
-    // Función para mostrar la lista de accesorios
-    function mostrarAccesorios() {
-        var accesorios = JSON.parse(localStorage.getItem('accesorios'));
+        // Función para mostrar la lista de michi
+        function mostrarMichis() {
+            var michis = JSON.parse(localStorage.getItem('michis'));
 
-        var accesoriosList = document.getElementById('accesorios-list');
-        accesoriosList.innerHTML = '';
+            var michisList = document.getElementById('michi-list');
+            michisList.innerHTML = '';
 
-        if (accesorios && accesorios.length > 0) {
-            var html = '<h3>Accesorios Registrados:</h3><ul>';
-            accesorios.forEach(function(accesorio) {
-                html += '<li>Nombre: ' + accesorio.nombre + ', Tipo: ' + accesorio.tipo + ', Precio: $' + accesorio.precio + '</li>';
-            });
-            html += '</ul>';
-            accesoriosList.innerHTML = html;
-        } else {
-            accesoriosList.innerHTML = '<p>No hay accesorios registrados.</p>';
+            if (michis && michis.length > 0) {
+                var html = '<h3>Registro del gato:</h3><ul>';
+                michis.forEach(function(michi) {
+                    html += '<li>nombre: ' + michi.nombre + ', edad: ' + michi.edad + ', info: ' + michi.info + '</li>';
+                });
+                html += '</ul>';
+                michisList.innerHTML = html;
+            } else {
+                michisList.innerHTML = '<p>No hay gato registrado.</p>';
+            }
         }
-    }
 
-    // Mostrar la lista de accesorios al cargar la página
-    window.onload = function() {
-        mostrarAccesorios();
-    };
+        // Mostrar la lista de michi al cargar la página
+        window.onload = function() {
+            mostrarMichis();
+        };
 
-    // Agregar evento al formulario para guardar el accesorio
-    document.getElementById('accesorios-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        guardarAccesorio();
-    });
-</script>
-<footer class="bg-dark text-light text-center py-3 fixed-bottom">
-    <p>&copy; 2024 Fundación Patitas&#128062;</p>
-</footer>
-
+        // Agregar evento al formulario para guardar el michi
+        document.getElementById('michi-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            guardarMichi();
+        });
+    </script>
 </body>
 </html>
