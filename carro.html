@@ -89,9 +89,9 @@
                 <div class="card">
                     <img src="img/cama.webp" class="card-img-top" alt="producto 1">
                     <div class="card-body">
-                        <p class="card-text">Producto 1</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">Camas para animales</p>
+                        <p class="precio">$80<span>.000</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Camas para animales', 80000)">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -99,19 +99,19 @@
                 <div class="card">
                     <img src="img/cepillo.jpeg" class="card-img-top" alt="producto 2">
                     <div class="card-body">
-                        <p class="card-text">Producto 2</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">cepillos</p>
+                        <p class="precio">$10<span>.000</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Cepillos', 10000)">Comprar</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card">
-                    <img src="img/correa.jpeg" class="card-img-top" alt="producto 3">
+                    <img src="img/correa.png" class="card-img-top" alt="producto 3">
                     <div class="card-body">
-                        <p class="card-text">Producto 3</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">Correas</p>
+                        <p class="precio">$12<span>.990</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Correas', 12990)">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -119,19 +119,19 @@
                 <div class="card">
                     <img src="img/juguete.webp" class="card-img-top" alt="producto 4">
                     <div class="card-body">
-                        <p class="card-text">Producto 4</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">Juguetes</p>
+                        <p class="precio">$15<span>.000</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Juguetes', 15000)">Comprar</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card">
-                    <img src="img/rascador.jpg" class="card-img-top" alt="producto 5">
+                    <img src="img/rescador.jpg" class="card-img-top" alt="producto 5">
                     <div class="card-body">
-                        <p class="card-text">Producto 5</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">Rascador</p>
+                        <p class="precio">$35<span>.990</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Rascador', 35990)">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -139,9 +139,9 @@
                 <div class="card">
                     <img src="img/sujetador.jpg" class="card-img-top" alt="producto 6">
                     <div class="card-body">
-                        <p class="card-text">Producto 6</p>
-                        <p class="precio">$199<span>.99</span></p>
-                        <button class="btn btn-warning">Comprar</button>
+                        <p class="card-text">Arnes</p>
+                        <p class="precio">$5<span>.000</span></p>
+                        <button class="btn btn-warning" onclick="addToCart('Arnés', 5000)">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -151,13 +151,42 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function scrollDown() {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
+            let cart = [];
+    
+            function addToCart(productName, productPrice) {
+                cart.push({name: productName, price: productPrice});
+                alert(`${productName} ha sido añadido al carrito`);
+                console.log(cart);
+            }
+    
+            function showCart() {
+                let cartContent = "Carrito de compras:\n\n";
+                let total = 0;
+                cart.forEach(item => {
+                    cartContent += `${item.name} - $${item.price.toFixed(2)}\n`;
+                    total += item.price;
+                });
+                cartContent += `\nTotal: $${total.toFixed(2)}`;
+                alert(cartContent);
+            }
+    
+            document.getElementById('header').innerHTML += '<button class="btn btn-warning" onclick="showCart()">Ver carrito</button>';
+        </script>
+        
+    <style>
+        body {
+           
+            background-image: url('img/foto111.jpeg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
         }
-        document.getElementById('bottom').addEventListener('click', scrollDown);
-    </script>
+    </style>
+    <br><br>
+    <br><br>
+    <br>
+    <footer class="bg-dark text-light text-center py-3 fixed-bottom">
+        <p>&copy; 2024 Fundación Patitas&#128062;</p>
+    </footer>
 </body>
 </html>
