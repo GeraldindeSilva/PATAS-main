@@ -91,7 +91,7 @@
                     <div class="card-body">
                         <p class="card-text">Camas para animales</p>
                         <p class="precio">$80<span>.000</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Camas para animales', 80000)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="cama para animales" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     <div class="card-body">
                         <p class="card-text">cepillos</p>
                         <p class="precio">$10<span>.000</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Cepillos', 10000)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Cepillos" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <div class="card-body">
                         <p class="card-text">Correas</p>
                         <p class="precio">$12<span>.990</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Correas', 12990)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Correa" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                     <div class="card-body">
                         <p class="card-text">Juguetes</p>
                         <p class="precio">$15<span>.000</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Juguetes', 15000)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="juguete" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                     <div class="card-body">
                         <p class="card-text">Rascador</p>
                         <p class="precio">$35<span>.990</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Rascador', 35990)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="rascador" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -141,8 +141,28 @@
                     <div class="card-body">
                         <p class="card-text">Arnes</p>
                         <p class="precio">$5<span>.000</span></p>
-                        <button class="btn btn-warning" onclick="addToCart('Arnés', 5000)">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="arne" data-precio="80000">Comprar</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="agregarProductoModal" tabindex="-1" role="dialog" aria-labelledby="agregarProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarProductoModalLabel">Agregar Producto al Carrito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Seleccione la cantidad que desea agregar al carrito:</p>
+                    <input type="number" id="cantidadProducto" min="1" max="10" value="1">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarAgregarProducto">Agregar al Carrito</button>
                 </div>
             </div>
         </div>
@@ -151,28 +171,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-            let cart = [];
-    
-            function addToCart(productName, productPrice) {
-                cart.push({name: productName, price: productPrice});
-                alert(`${productName} ha sido añadido al carrito`);
-                console.log(cart);
-            }
-    
-            function showCart() {
-                let cartContent = "Carrito de compras:\n\n";
-                let total = 0;
-                cart.forEach(item => {
-                    cartContent += `${item.name} - $${item.price.toFixed(2)}\n`;
-                    total += item.price;
-                });
-                cartContent += `\nTotal: $${total.toFixed(2)}`;
-                alert(cartContent);
-            }
-    
-            document.getElementById('header').innerHTML += '<button class="btn btn-warning" onclick="showCart()">Ver carrito</button>';
-        </script>
-        
+        $(document).ready(function() {
+            $('#confirmarAgregarProducto').click(function() {
+                // Aquí puedes obtener la cantidad seleccionada y los datos del producto
+                let cantidad = parseInt($('#cantidadProducto').val());
+                let nombre = $('#confirmarAgregarProducto').data('nombre');
+                let precio = parseInt($('#confirmarAgregarProducto').data('precio'));
+                // Luego puedes realizar la lógica para agregar el producto al carrito
+                // Por ejemplo, puedes llamar a una función addToCart(nombre, precio, cantidad)
+                // Aquí dejo un ejemplo de cómo mostrar esos datos en la consola:
+                console.log('Nombre del producto:', nombre);
+                console.log('Precio del producto:', precio);
+                console.log('Cantidad seleccionada:', cantidad);
+                // Luego puedes cerrar el modal si es necesario
+                $('#agregarProductoModal').modal('hide');
+            });
+        });
+    </script>
     <style>
         body {
            

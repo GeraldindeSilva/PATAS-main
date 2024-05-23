@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos */
+    </style>
+</head>
+<body>
+    <!-- Contenido de la factura -->
+    <div class="container">
+        <h1>Factura</h1>
+        <!-- Lista de productos -->
+        <ul id="cart-items"></ul>
+        <!-- Total de la factura -->
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+    
+    <!-- Script de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Obtener carrito de localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Mostrar productos en la factura
+            let total = 0;
+            cart.forEach(function(product){
+                $('#cart-items').append('<li>' + product.name + ' - $' + product.price.toFixed(2) + '</li>');
+                total += product.price;
+            });
+            // Mostrar total en la factura
+            $('#cart-total').text(total.toFixed(2));
+        });
+    </script>
+</body>
+</html>
