@@ -82,6 +82,7 @@
     </nav>
     <header id="header">
         <img class="carrito" src="img/carro.png" alt="carrito">
+        <a href="factura.html" class="btn btn-primary">ver carro</a>
     </header>
     <div id="contenedor1" class="container mt-5 pt-5">
         <div class="row">
@@ -91,7 +92,7 @@
                     <div class="card-body">
                         <p class="card-text">Camas para animales</p>
                         <p class="precio">$80<span>.000</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="cama para animales" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Cama para animales" data-precio="80000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -99,9 +100,9 @@
                 <div class="card">
                     <img src="img/cepillo.jpeg" class="card-img-top" alt="producto 2">
                     <div class="card-body">
-                        <p class="card-text">cepillos</p>
+                        <p class="card-text">Cepillos</p>
                         <p class="precio">$10<span>.000</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Cepillos" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Cepillos" data-precio="10000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@
                     <div class="card-body">
                         <p class="card-text">Correas</p>
                         <p class="precio">$12<span>.990</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Correa" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Correas" data-precio="12990">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -121,7 +122,7 @@
                     <div class="card-body">
                         <p class="card-text">Juguetes</p>
                         <p class="precio">$15<span>.000</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="juguete" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Juguetes" data-precio="15000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -131,7 +132,7 @@
                     <div class="card-body">
                         <p class="card-text">Rascador</p>
                         <p class="precio">$35<span>.990</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="rascador" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Rascador" data-precio="35990">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -141,7 +142,7 @@
                     <div class="card-body">
                         <p class="card-text">Arnes</p>
                         <p class="precio">$5<span>.000</span></p>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="arne" data-precio="80000">Comprar</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#agregarProductoModal" data-nombre="Arnes" data-precio="5000">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -172,29 +173,55 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Capturar datos del producto al abrir el modal
+            $('#agregarProductoModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var nombre = button.data('nombre');
+                var precio = button.data('precio');
+                var modal = $(this);
+                modal.find('#confirmarAgregarProducto').data('nombre', nombre);
+                modal.find('#confirmarAgregarProducto').data('precio', precio);
+            });
+
             $('#confirmarAgregarProducto').click(function() {
-                // Aquí puedes obtener la cantidad seleccionada y los datos del producto
+                // Obtener cantidad seleccionada y datos del producto
                 let cantidad = parseInt($('#cantidadProducto').val());
-                let nombre = $('#confirmarAgregarProducto').data('nombre');
-                let precio = parseInt($('#confirmarAgregarProducto').data('precio'));
-                // Luego puedes realizar la lógica para agregar el producto al carrito
-                // Por ejemplo, puedes llamar a una función addToCart(nombre, precio, cantidad)
-                // Aquí dejo un ejemplo de cómo mostrar esos datos en la consola:
-                console.log('Nombre del producto:', nombre);
-                console.log('Precio del producto:', precio);
-                console.log('Cantidad seleccionada:', cantidad);
-                // Luego puedes cerrar el modal si es necesario
+                let nombre = $(this).data('nombre');
+                let precio = parseInt($(this).data('precio'));
+
+                // Lógica para agregar el producto al carrito
+                addToCart(nombre, precio, cantidad);
+
+                // Cerrar el modal
                 $('#agregarProductoModal').modal('hide');
             });
+
+            function addToCart(name, price, quantity) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let existingProduct = cart.find(product => product.name === name);
+
+                if (existingProduct) {
+                    existingProduct.quantity += quantity;
+                    if (existingProduct.quantity > 10) existingProduct.quantity = 10;
+                } else {
+                    cart.push({ name: name, price: price, quantity: quantity });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart();
+            }
+
+            function updateCart() {
+                // Actualizar la visualización del carrito (si es necesario)
+            }
         });
     </script>
     <style>
         body {
-           
             background-image: url('img/foto111.jpeg');
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
     </style>
     <br><br>
