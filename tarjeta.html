@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipo de Tarjeta</title>
+    <title>Registro de Tarjeta</title>
     <style>
         body {
             background-image: url('img/foto111.jpeg');
@@ -14,10 +14,17 @@
         }
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
         }
         form {
             width: 50%;
             margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .form-group {
             margin-bottom: 15px;
@@ -25,6 +32,7 @@
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         input, select {
             width: 100%;
@@ -48,8 +56,11 @@
 </head>
 <body>
 
-<form id="cardTypeForm" onsubmit="saveCardData(event)">
-    <h2>REGISTRAR TARJETA</h2>
+<h2>Registro de Tarjeta</h2>
+
+<div id="orderTotal"></div>
+
+<form id="cardRegistrationForm" onsubmit="saveCardData(event)">
     <div class="form-group">
         <label for="paymentType">Tipo de Pago:</label>
         <select id="paymentType" name="paymentType" required>
@@ -75,7 +86,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn">pagar</button>
+    <button type="submit" class="btn">Registrar</button>
 </form>
 
 <script>
@@ -88,25 +99,30 @@
         }
     });
 
+    function displayOrderTotal() {
+        let total = localStorage.getItem('total');
+        document.getElementById("orderTotal").innerText = `Total del Pedido: $${total}`;
+    }
+
     function saveCardData(event) {
         event.preventDefault();
+        
+        let cardData = {
+            cardNumber: document.getElementById("cardNumber").value,
+            expiryDate: document.getElementById("expiryDate").value,
+            cvv: document.getElementById("cvv").value
+        };
 
-        let paymentType = document.getElementById("paymentType").value;
+        // Guardar los datos de la tarjeta en localStorage
+        localStorage.setItem("cardData", JSON.stringify(cardData));
 
-        if (paymentType === "creditCard" || paymentType === "debitCard") {
-            let cardData = {
-                cardNumber: document.getElementById("cardNumber").value,
-                expiryDate: document.getElementById("expiryDate").value,
-                cvv: document.getElementById("cvv").value
-            };
-
-            // Guardar los datos de la tarjeta en localStorage
-            localStorage.setItem("cardData", JSON.stringify(cardData));
-        }
-
-        alert("Felicidades, tu compra se ha realizado con éxito!");
+        // Mostrar un mensaje de éxito y redirigir a la página principal
+        alert("¡Felicidades, tu compra se ha realizado con éxito!");
         window.location.href = "menu.html";
     }
+
+    // Mostrar el total del pedido al cargar la página
+    displayOrderTotal();
 </script>
 
 </body>
