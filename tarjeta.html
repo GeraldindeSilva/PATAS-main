@@ -49,7 +49,7 @@
 <body>
 
 <form id="cardTypeForm" onsubmit="saveCardData(event)">
-    <h2>INGRESE SU TARJETA</h2>
+    <h2>REGISTRAR TARJETA</h2>
     <div class="form-group">
         <label for="paymentType">Tipo de Pago:</label>
         <select id="paymentType" name="paymentType" required>
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn">Registrar</button>
+    <button type="submit" class="btn">pagar</button>
 </form>
 
 <script>
@@ -104,7 +104,8 @@
             localStorage.setItem("cardData", JSON.stringify(cardData));
         }
 
-        alert("Datos registrados exitosamente!");
+        alert("Felicidades, tu compra se ha realizado con éxito!");
+        window.location.href = "menu.html";
     }
 </script>
 
