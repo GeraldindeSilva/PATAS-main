@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipo de Tarjeta</title>
+    <style>
+        body {
+            background-image: url('img/foto111.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<form id="cardTypeForm" onsubmit="saveCardData(event)">
+    <h2>INGRESE SU TARJETA</h2>
+    <div class="form-group">
+        <label for="paymentType">Tipo de Pago:</label>
+        <select id="paymentType" name="paymentType" required>
+            <option value="creditCard">Tarjeta de Crédito</option>
+            <option value="debitCard">Tarjeta de Débito</option>
+            <option value="paypal">PayPal</option>
+            <option value="bankTransfer">Transferencia Bancaria</option>
+        </select>
+    </div>
+
+    <div id="cardDetails" style="display:none;">
+        <div class="form-group">
+            <label for="cardNumber">Número de Tarjeta:</label>
+            <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" title="Debe contener 16 dígitos" required>
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Fecha de Expiración:</label>
+            <input type="month" id="expiryDate" name="expiryDate" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" pattern="\d{3}" title="Debe contener 3 dígitos" required>
+        </div>
+    </div>
+
+    <button type="submit" class="btn">Registrar</button>
+</form>
+
+<script>
+    document.getElementById("paymentType").addEventListener("change", function() {
+        var cardDetails = document.getElementById("cardDetails");
+        if (this.value === "creditCard" || this.value === "debitCard") {
+            cardDetails.style.display = "block";
+        } else {
+            cardDetails.style.display = "none";
+        }
+    });
+
+    function saveCardData(event) {
+        event.preventDefault();
+
+        let paymentType = document.getElementById("paymentType").value;
+
+        if (paymentType === "creditCard" || paymentType === "debitCard") {
+            let cardData = {
+                cardNumber: document.getElementById("cardNumber").value,
+                expiryDate: document.getElementById("expiryDate").value,
+                cvv: document.getElementById("cvv").value
+            };
+
+            // Guardar los datos de la tarjeta en localStorage
+            localStorage.setItem("cardData", JSON.stringify(cardData));
+        }
+
+        alert("Datos registrados exitosamente!");
+    }
+</script>
+
+</body>
+</html>
