@@ -3,33 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Grafico</title>
+  <title>Admin Gráfico</title>
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <style>
+    body {
+      background-image: url('img/foto111.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+    }
+    .navbar-custom {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .navbar-nav .nav-link {
+      color: white !important;
+    }
+    .chart-title {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .chart-container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="chart-title">
-      <h1>Grafico de Administrador</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Panel de Administración</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="adTienda.html">Tienda</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="adPedidos.html">Pedidos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="adVentas.html">Ventas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="menu.html">Página principal</a>
+        </li>
+        </ul>
+      </div>
     </div>
-     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="adUsuarios.html">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="adTienda.html">Tienda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="adPedidos.html">Pedidos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="menu.html">Pagina principal</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="chart-title">
+      <h1>Gráfico de Administrador</h1>
+    </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="chart-container">
@@ -39,59 +73,62 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS, preferiblemente al final del body -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Enlaces a JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
 
-  <script>const data = {
-    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    datasets: [{
-      label: 'Ventas de Productos',
-      data: [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300], // Datos de ventas ajustados
-      backgroundColor: 'rgba(54, 162, 235, 0.5)', // Cambio el color del gráfico a un azul más claro
-      borderColor: 'rgba(54, 162, 235, 1)', // Cambio el color del borde del gráfico a un azul más claro
-      borderWidth: 1
-    }]
-  };
+  <script>
+    const data = {
+      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      datasets: [{
+        label: 'Ventas de Productos',
+        data: [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300],
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    };
 
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: '#fff' // Cambio el color del texto del eje Y a blanco
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#fff'
+            }
           }
         },
-        x: {
-          ticks: {
-            color: '#fff' // Cambio el color del texto de los meses a blanco
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: '#fff' // Cambio el color del texto de la leyenda a blanco
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
           }
         }
       }
+    };
+
+    // Inicializar el gráfico
+    let myChart = new Chart(
+      document.getElementById('ventasChart'),
+      config
+    );
+
+    function incrementQuantity(input) {
+      let quantityInput = input.parentNode.querySelector('.quantity-input');
+      let currentValue = parseInt(quantityInput.value);
+      quantityInput.value = currentValue + 1;
+      updateTotalPrice(input);
     }
-  };
-// Inicializar el gráfico
- let myChart = new Chart(
-    document.getElementById('ventasChart'),
-    config
-  );
-  function incrementQuantity(input) {
-    let quantityInput = input.parentNode.querySelector('.quantity-input');
-    let currentValue = parseInt(quantityInput.value);
-    quantityInput.value = currentValue + 1;
-    updateTotalPrice(input);
-}
-</script>
+  </script>
 </body>
 </html>

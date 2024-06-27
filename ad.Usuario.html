@@ -4,36 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administraciónn</title>
+    <title>Panel de Administración</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('img/foto111.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            margin-right: 1rem;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        table {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Panel de Administración - Tienda de Poleras</h1>
-        <div class="row">
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                <div class="container-fluid">
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Panel de Administración</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
                         <a class="nav-link" href="adTienda.html">Tienda</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active" href="adPedidos.html">Pedidos</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active" href="adVentas.html">Ventas</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active" href="menu.html">Pagina principal</a>
-                      </li>
-                      
-                  </ul>
-                </div>
-              </nav>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adPedidos.html">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adVentas.html">Ventas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Página principal</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Panel de Administración</h1>
+        <div class="row">
             <div class="col-md-6">
                 <h2>Usuarios</h2>
-                <table id="userTable" class="table table-dark">
+                <table id="userTable" class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -43,150 +69,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Usuario 1</td>
-                            <td>usuario1@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Usuario 2</td>
-                            <td>usuario2@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Usuario 3</td>
-                            <td>usuario3@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Usuario 4</td>
-                            <td>usuario4@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Usuario 5</td>
-                            <td>usuario5@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Usuario 6</td>
-                            <td>usuario6@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Usuario 7</td>
-                            <td>usuario7@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Usuario 8</td>
-                            <td>usuario8@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Usuario 9</td>
-                            <td>usuario9@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Usuario 10</td>
-                            <td>usuario10@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>Usuario 11</td>
-                            <td>usuario11@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>Usuario 12</td>
-                            <td>usuario12@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>Usuario 13</td>
-                            <td>usuario13@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>Usuario 14</td>
-                            <td>usuario14@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>15</td>
-                            <td>Usuario 15</td>
-                            <td>usuario15@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td>Usuario 16</td>
-                            <td>usuario16@example.com</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary editBtn">Editar</button>
-                                <button class="btn btn-sm btn-danger deleteBtn">Eliminar</button>
-                            </td>
-                        </tr>
+                        <!-- Usuarios están aquí -->
                     </tbody>
                 </table>
             </div>
@@ -202,18 +85,19 @@
                         <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña:</label>
+                        <label for="contrasena" class="form-label">Contraseña</label>
                         <div class="input-group">
                             <input type="password" id="contrasena" name="contrasena" class="form-control" required>
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword">Mostrar</button>
                         </div>
-                    </div>                  
+                    </div>
                     <button type="submit" class="btn btn-primary">Agregar Usuario</button>
                 </form>
             </div>
         </div>
     </div>
-    <div id="editUserForm" style="display: none;">
+
+    <div id="editUserForm" class="container mt-5" style="display: none;">
         <h2>Editar Usuario</h2>
         <form id="editForm">
             <div class="mb-3">
@@ -228,69 +112,68 @@
         </form>
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script> $(document).ready(function () {
-        $('#togglePassword').click(function () {
-            let contrasenaInput = $('#contrasena');
-            let botonToggle = $('#togglePassword');
-    
-            if (contrasenaInput.attr('type') === 'password') {
-                contrasenaInput.attr('type', 'text');
-                botonToggle.text('Ocultar');
-            } else {
-                contrasenaInput.attr('type', 'password');
-                botonToggle.text('Mostrar');
-            }
-        });
-    
-        $('#addUserForm').submit(function (e) {
-            e.preventDefault();
-            let nombre = $('#nombre').val();
-            let email = $('#email').val();
-            let rowCount = $('#userTable tr').length;
-            let newRow = '<tr><td>' + rowCount + '</td><td>' + nombre + '</td><td>' + email + '</td><td><button class="btn btn-sm btn-primary editBtn" data-user-id="' + rowCount + '">Editar</button><button class="btn btn-sm btn-danger deleteBtn">Eliminar</button></td></tr>';
-            $('#userTable tbody').append(newRow);
-            $(this).trigger("reset");
-        });
-    
-        $('#userTable').on('click', '.deleteBtn', function () {
-            $(this).closest('tr').remove();
-            $('#userTable tbody tr').each(function (index) {
-                $(this).find('td:first').text(index + 1);
+    <script>
+        $(document).ready(function () {
+            $('#togglePassword').click(function () {
+                let contrasenaInput = $('#contrasena');
+                let botonToggle = $('#togglePassword');
+
+                if (contrasenaInput.attr('type') === 'password') {
+                    contrasenaInput.attr('type', 'text');
+                    botonToggle.text('Ocultar');
+                } else {
+                    contrasenaInput.attr('type', 'password');
+                    botonToggle.text('Mostrar');
+                }
+            });
+
+            $('#addUserForm').submit(function (e) {
+                e.preventDefault();
+                let nombre = $('#nombre').val();
+                let email = $('#email').val();
+                let rowCount = $('#userTable tbody tr').length + 1;
+                let newRow = `<tr><td>${rowCount}</td><td>${nombre}</td><td>${email}</td><td><button class="btn btn-sm btn-primary editBtn" data-user-id="${rowCount}">Editar</button><button class="btn btn-sm btn-danger deleteBtn">Eliminar</button></td></tr>`;
+                $('#userTable tbody').append(newRow);
+                $(this).trigger("reset");
+            });
+
+            $('#userTable').on('click', '.deleteBtn', function () {
+                $(this).closest('tr').remove();
+                $('#userTable tbody tr').each(function (index) {
+                    $(this).find('td:first').text(index + 1);
+                });
+            });
+
+            $('#userTable').on('click', '.editBtn', function () {
+                let row = $(this).closest('tr');
+                let email = row.find('td:eq(2)').text();
+
+                $('#editNombre').val(row.find('td:eq(1)').text());
+                $('#editEmail').val(email);
+                $('#editUserForm').show().data('user-email', email);
+
+                $('html, body').animate({
+                    scrollTop: $('#editUserForm').offset().top
+                }, 500);
+            });
+
+            $('#editForm').submit(function (e) {
+                e.preventDefault();
+                let userEmail = $('#editUserForm').data('user-email');
+                let nombre = $('#editNombre').val();
+                let email = $('#editEmail').val();
+
+                let row = $('#userTable').find(`td:contains(${userEmail})`).closest('tr');
+                row.find('td:eq(1)').text(nombre);
+                row.find('td:eq(2)').text(email);
+
+                $('#editUserForm').hide();
             });
         });
-    
-        $('#userTable').on('click', '.editBtn', function () {
-            let row = $(this).closest('tr');
-            let email = row.find('td:eq(2)').text();
-    
-            $('#editNombre').val(row.find('td:eq(1)').text());
-            $('#editEmail').val(email);
-            $('#editUserForm').show().data('user-email', email);
-            
-            // Scroll hacia el formulario de edición
-            $('html, body').animate({
-                scrollTop: $('#editUserForm').offset().top
-            }, 500);
-        });
-    
-        $('#editForm').submit(function (e) {
-            e.preventDefault();
-            let userEmail = $('#editUserForm').data('user-email');
-            let nombre = $('#editNombre').val();
-            let email = $('#editEmail').val();
-    
-            let row = $('#userTable').find('td:contains(' + userEmail + ')').closest('tr');
-            row.find('td:eq(1)').text(nombre);
-            row.find('td:eq(2)').text(email);
-    
-            $('#editUserForm').hide();
-        });
-    });
     </script>
+</body>
 
 </html>
