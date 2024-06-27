@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
   <div class="container mt-5">
     <h1 class="mb-4">Administrar Pedidos</h1>
@@ -15,21 +17,21 @@
         <div class="container-fluid">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <li class="nav-item">
-                <a class="nav-link active" href="adUsuarios.html">Usuarios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="adTienda.html">Tienda</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="adVentas.html">Ventas</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="TiendaOnline.html">Tienda Online</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="factura.html">Generador de Factura</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="adUsuarios.html">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="adTienda.html">Tienda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="adVentas.html">Ventas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="TiendaOnline.html">Tienda Online</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="factura.html">Generador de Factura</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -56,7 +58,8 @@
                     <td>Concepcion, Paicavi 3280</td>
                     <td><span class="status entregado">Entregado</span></td>
                     <td>
-                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="1">Editar</button>
+                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"
+                        data-id="1">Editar</button>
                       <button class="btn btn-sm btn-danger delete-btn" data-id="1">Eliminar</button>
                     </td>
                   </tr>
@@ -67,7 +70,8 @@
                     <td>456 Calle Alamo, Antofagasta</td>
                     <td><span class="status cancelado">Cancelado</span></td>
                     <td>
-                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="2">Editar</button>
+                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"
+                        data-id="2">Editar</button>
                       <button class="btn btn-sm btn-danger delete-btn" data-id="2">Eliminar</button>
                     </td>
                   </tr>
@@ -78,7 +82,8 @@
                     <td>26 Calle Brasil, Linares</td>
                     <td><span class="status en_camino">en_camino</span></td>
                     <td>
-                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="2">Editar</button>
+                      <button class="btn btn-sm btn-custom edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"
+                        data-id="2">Editar</button>
                       <button class="btn btn-sm btn-danger delete-btn" data-id="2">Eliminar</button>
                     </td>
                   </tr>
@@ -154,6 +159,63 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <script src ="js/adpedidos.js"></script>
+  <script>$(document).ready(function () {
+      let currentOrderId;
+
+      $('.edit-btn').click(function () {
+        currentOrderId = $(this).data('id');
+        let $row = $('tr[data-id="' + currentOrderId + '"]');
+        let username = $row.find('td:nth-child(2)').text();
+        let products = $row.find('td:nth-child(3)').text();
+        let address = $row.find('td:nth-child(4)').text();
+        let status = $row.find('.status').text();
+
+        $('#orderId').val(currentOrderId);
+        $('#username').val(username);
+        $('#products').val(products);
+        $('#address').val(address);
+        $('#status').val(status);
+
+        $('#editModal').modal('show');
+      });
+
+      $('.save-btn').click(function () {
+        let orderId = $('#orderId').val();
+        let username = $('#username').val();
+        let products = $('#products').val();
+        let address = $('#address').val();
+        let status = $('#status').val();
+
+        // Validar que ningún campo esté vacío
+        if (username.trim() === '' || products.trim() === '' || address.trim() === '' || status.trim() === '') {
+          alert('Por favor completa todos los campos.');
+          return;
+        }
+
+        let $row = $('tr[data-id="' + orderId + '"]');
+        $row.find('td:nth-child(2)').text(username);
+        $row.find('td:nth-child(3)').text(products);
+        $row.find('td:nth-child(4)').text(address);
+        $row.find('.status').text(status).removeClass().addClass('status').addClass(status);
+
+        console.log("Guardar cambios para el pedido con ID: " + orderId);
+
+        $('#editModal').modal('hide');
+      });
+
+      $('.delete-btn').click(function () {
+        currentOrderId = $(this).closest('tr').data('id');
+        $('#deleteModal').modal('show');
+      });
+
+      $('.confirm-delete-btn').click(function () {
+        let orderId = currentOrderId;
+
+        $('tr[data-id="' + orderId + '"]').remove();
+
+        $('#deleteModal').modal('hide');
+      });
+    });</script>
 </body>
-</html> 
+
+</html>
